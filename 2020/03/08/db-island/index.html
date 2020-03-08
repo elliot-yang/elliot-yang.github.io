@@ -3,16 +3,20 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
-    <title>标签: NoSQL | Yang&#39;s Blog</title>
+    <title>数据库隔离中的脏读、不可重复读、幻读 | Yang&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content="java,yang">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yang&#39;s Blog">
-<meta property="og:url" content="https://elliot-yang.github.io/tags/NoSQL/index.html">
+    <meta name="description" content="注意： 以下的修改指insert、update和delete，提交包括正常的commit操作以及rollback回滚操作。">
+<meta name="keywords" content="java,yang">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库隔离中的脏读、不可重复读、幻读">
+<meta property="og:url" content="https://elliot-yang.github.io/2020/03/08/db-island/index.html">
 <meta property="og:site_name" content="Yang&#39;s Blog">
+<meta property="og:description" content="注意： 以下的修改指insert、update和delete，提交包括正常的commit操作以及rollback回滚操作。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-03-08T03:52:53.411Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yang&#39;s Blog">
+<meta name="twitter:title" content="数据库隔离中的脏读、不可重复读、幻读">
+<meta name="twitter:description" content="注意： 以下的修改指insert、update和delete，提交包括正常的commit操作以及rollback回滚操作。">
     
 
     
@@ -209,45 +213,198 @@
 </aside>
 
             
-            <section id="main">
-<div class="timeline timeline-wrap">
-    <div class="timeline-row timeline-row-major">
-        <span class="node"><i class="fas fa-tag"></i></span>
-        <h1 class="title">#NoSQL</h1>
-    </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+            <section id="main"><article id="post-db-island" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/06/12/redis/">redis基础</a>
+        <h1 class="article-title" itemprop="name">
+            数据库隔离中的脏读、不可重复读、幻读
         </h1>
     
 
-                <div class="article-meta">
-                    
+                
+                    <div class="article-meta">
+                        
     <div class="article-date">
         <i class="fas fa-calendar-alt"></i>
-        <a href="/2018/06/12/redis/">
-            <time datetime="2018-06-12T22:29:05.000Z" itemprop="datePublished">2018-06-12</time>
+        <a href="/2020/03/08/db-island/">
+            <time datetime="2020-03-08T11:50:58.000Z" itemprop="datePublished">2020-03-08</time>
         </a>
     </div>
 
 
-                    
-                    
-    <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/NoSQL/">NoSQL</a>, <a class="tag-link" href="/tags/redis/">redis</a>
-    </div>
+                        
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h4 id="注意：-以下的修改指insert、update和delete，提交包括正常的commit操作以及rollback回滚操作。"><a href="#注意：-以下的修改指insert、update和delete，提交包括正常的commit操作以及rollback回滚操作。" class="headerlink" title="注意： 以下的修改指insert、update和delete，提交包括正常的commit操作以及rollback回滚操作。"></a>注意： 以下的修改指insert、update和delete，提交包括正常的commit操作以及rollback回滚操作。</h4><a id="more"></a>
+<h3 id="传统关系型数据库在事务上有四种隔离策略："><a href="#传统关系型数据库在事务上有四种隔离策略：" class="headerlink" title="传统关系型数据库在事务上有四种隔离策略："></a>传统关系型数据库在事务上有四种隔离策略：</h3><ol>
+<li><p>Serializable： 串行，即简单将所有事务串行的执行，这种方式完全遵循ACID原则，确保每个事务之间完全隔离，但消耗大效率低，一般不会使用该种隔离。</p>
+</li>
+<li><p>Repeatable Read： 重复读，确保一个事务不会修改另一个事务已读取的记录，在MySQL数据库中默认使用该隔离策略。</p>
+</li>
+<li><p>Read Committed： 提交读，确保一个事务不会读取到另一个事务已修改但未提交的数据，大部分数据默认采用该种隔离。</p>
+</li>
+<li><p>Read Uncommitted： 未提交读，一个事务已修改但未提交的数据也能被其他事务读取，最为宽松的隔离策略。</p>
+</li>
+</ol>
+<h3 id="数据库事务中又有三种最易发生的问题："><a href="#数据库事务中又有三种最易发生的问题：" class="headerlink" title="数据库事务中又有三种最易发生的问题："></a>数据库事务中又有三种最易发生的问题：</h3><ul>
+<li><p>脏读：顾名思义，即是读取到了脏数据，脏数据指在其他事务中进行了修改但未提交的记录。</p>
+</li>
+<li><p>不可重复读：不可重复读是指在一个事务A中，进行了数据读取之后，其他事务对这些数据进行了修改，导致事务A在后一次的数据读取中发现两次读取到的数据不匹配。</p>
+</li>
+<li><p>幻读：幻读指一个事务A通过条件查询到n条数据之后其他事务对数据进行了修改，导致事务A在下一次使用相同条件查询时获取到的数据条数和n不相同。</p>
+</li>
+</ul>
+<h3 id="隔离级别及三种问题之间的关系"><a href="#隔离级别及三种问题之间的关系" class="headerlink" title="隔离级别及三种问题之间的关系"></a>隔离级别及三种问题之间的关系</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>脏读</th>
+<th>不可重复读</th>
+<th>幻读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Serializable</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>Repeatable Read</td>
+<td>×</td>
+<td>×</td>
+<td>√</td>
+</tr>
+<tr>
+<td>Read Committed</td>
+<td>×</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>Read Uncommitted</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>√代表可能发生， ×代表不会发生</p>
+</blockquote>
 
-                </div>
-            </div>
+        
         </div>
-    
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
 </div>
+
+    <a data-url="https://elliot-yang.github.io/2020/03/08/db-island/" data-id="ck7ii4ebo0000y2qbm22t63nl" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fab fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fab fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fab fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fab fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2018/06/12/redis/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">redis基础</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+
 </section>
             
                 

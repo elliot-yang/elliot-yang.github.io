@@ -157,7 +157,7 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                1
+                2
                 <span>文章</span>
             </div>
             <div class="article-info-block">
@@ -210,6 +210,127 @@
 
             
             <section id="main">
+    <article id="post-db-island" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2020/03/08/db-island/">数据库隔离中的脏读、不可重复读、幻读</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fas fa-calendar-alt"></i>
+        <a href="/2020/03/08/db-island/">
+            <time datetime="2020-03-08T11:50:58.000Z" itemprop="datePublished">2020-03-08</time>
+        </a>
+    </div>
+
+
+                        
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><h4 id="注意：-以下的修改指insert、update和delete，提交包括正常的commit操作以及rollback回滚操作。"><a href="#注意：-以下的修改指insert、update和delete，提交包括正常的commit操作以及rollback回滚操作。" class="headerlink" title="注意： 以下的修改指insert、update和delete，提交包括正常的commit操作以及rollback回滚操作。"></a>注意： 以下的修改指insert、update和delete，提交包括正常的commit操作以及rollback回滚操作。</h4></p>
+            <p class="article-more-link">
+                <a href="/2020/03/08/db-island/#more">查看更多</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://elliot-yang.github.io/2020/03/08/db-island/" data-id="ck7ii4ebo0000y2qbm22t63nl" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fab fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fab fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fab fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fab fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-redis" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -260,7 +381,7 @@
 
 </div>
 
-    <a data-url="https://elliot-yang.github.io/2018/06/12/redis/" data-id="ck7igcuy000002du5ncrr7r0x" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="https://elliot-yang.github.io/2018/06/12/redis/" data-id="ck7ii4ebt0002y2qbq8ismfap" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -349,6 +470,25 @@
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2020/03/08/db-island/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/03/08/db-island/" class="title">数据库隔离中的脏读、不可重复读、幻读</a></p>
+                            <p class="item-date"><time datetime="2020-03-08T11:50:58.000Z" itemprop="datePublished">2020-03-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2018/06/12/redis/" class="thumbnail">
     
     
@@ -376,7 +516,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
