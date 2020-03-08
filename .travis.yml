@@ -1,0 +1,19 @@
+sudo: false
+language: node_js
+node_js:
+  - 10 # use nodejs v10 LTS
+cache: npm
+branches:
+  only:
+    - ghPages # build ghPages branch only
+script:
+  - hexo generate # generate static files
+deploy:
+  provider: pages
+  target_branch: master
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  on:
+    branch: ghPages
+  local-dir: public
