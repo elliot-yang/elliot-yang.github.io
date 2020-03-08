@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    <title>redis基础 | Yang&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="安装部分">
+<meta name="keywords" content="redis,NoSQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis基础">
+<meta property="og:url" content="https://elliot-yang.github.io/2018/06/12/redis/index.html">
+<meta property="og:site_name" content="Yang&#39;s Blog">
+<meta property="og:description" content="安装部分">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-03-08T03:03:23.631Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="redis基础">
+<meta name="twitter:description" content="安装部分">
+    
+
+    
+        <link rel="alternate" href="/" title="Yang&#39;s Blog" type="application/atom+xml">
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome5/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/libs/font-awesome5/css/fa-brands.min.css">
+    <link rel="stylesheet" href="/libs/font-awesome5/css/fa-solid.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Yang&#39;s Blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/head.png" />
+                            <i class="fas fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fas fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile" class="profile-fixed">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/head.png" />
+            <h2 id="name">Yang</h2>
+            <h3 id="title">Java Web Developer</h3>
+            <span id="location"><i class="fas fa-map-marker-alt" style="padding-right: 5px"></i>ShangHai, China</span>
+            <a id="follow" target="_blank" href="https://github.com/elliot-yang/">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                1
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                2
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/elliot-yang/" target="_blank" title="github" class=tooltip>
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fab fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fab fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-redis" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            redis基础
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fas fa-calendar-alt"></i>
+        <a href="/2018/06/12/redis/">
+            <time datetime="2018-06-12T22:29:05.000Z" itemprop="datePublished">2018-06-12</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/NoSQL/">NoSQL</a>, <a class="tag-link" href="/tags/redis/">redis</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h3 id="安装部分"><a href="#安装部分" class="headerlink" title="安装部分"></a>安装部分</h3><a id="more"></a>  
+<p>环境：Ubuntu 16.04 LTS</p>
+<ol>
+<li>先从redis官网上下载redis的源码得到 redis-3.2.8.tar.gz</li>
+<li><p>使用命令解压文件到当前用户的software目录下（目录按照个人习惯定）  </p>
+ <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf redis-3.2.8.tar.gz -C ~/software/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用make命令  </p>
+ <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/software/redis-3.2.8</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>make完成之后，可执行文件就在src目录下了(可以选择单独将几个redis-*开头的可执行文件复制到单独的目录使用)</p>
+ <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> src </span><br><span class="line"><span class="comment"># 这样是直接启动redis服务器，使用默认配置</span></span><br><span class="line">./redis-server</span><br><span class="line"><span class="comment"># 或者使用指定配置文件的方式启动</span></span><br><span class="line">./redis-server ~/software/redis-3.2.8/redis.conf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改配置文件，redis自带的redis.conf默认是只允许本机访问的，如果需要别的机器访问的话是需要修改一下配置的</p>
+<ul>
+<li><p>启动vi编辑器修改配置文件</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi ~/software/redis-3.2.8/redis.conf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>找到下面这句，这是将redis配置绑定在本机</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bind</span> 127.0.0.1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为了方便，我们直接将这句注释掉,这样就是所有的主机都可以访问redis,修改为下面这样</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># bind 127.0.0.1</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>不过为了安全着想，最好设置固定的访问地址，不然部署在公网上的redis没有密码的话是很容易被攻击的</p>
+</li>
+</ul>
+</li>
+<li>设置为自动启动<ul>
+<li>先打开解压缩后的目录编辑utils/redis_init_scrip文件，修改文件顶部的几个配置，指定对应的路径（pid文件在运行过redis后会自动生成在/var/run/目录下</li>
+<li>将utils/redis_init_scrip文件复制到/etc/init.d/目录下命名为redis，并授权<code>chmod +x</code></li>
+<li>开启服务自启，执行命令<code>chkconfig redis on</code></li>
+<li>添加到开机自启，执行命令<code>chkconfig –add redis</code></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="使用部分"><a href="#使用部分" class="headerlink" title="使用部分"></a>使用部分</h3><p>首先需要启动redis自带的客户端,同样在src目录中已经包含了<br>    <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/software/redis-3.2.8/src</span><br><span class="line">./redis-cli</span><br><span class="line"><span class="comment"># 若是访问远程redis-server的话需要指定host和端口</span></span><br><span class="line">./redis-cli -h &lt;host&gt; -p &lt;port&gt;</span><br></pre></td></tr></table></figure></p>
+<p>使用上面的命令就能进入redis客户端了。</p>
+<ol>
+<li><p>string类型的一些简单操作</p>
+ <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加一个键为name，值为yang的string类型数据</span></span><br><span class="line"><span class="built_in">set</span> name <span class="string">'yang'</span></span><br><span class="line"><span class="comment"># 获取键为name的string类型值</span></span><br><span class="line">get name</span><br><span class="line"><span class="comment"># 设置键值，并获取旧值,单双引号注意配对</span></span><br><span class="line">getset name <span class="string">"yang's blog"</span></span><br><span class="line"><span class="comment"># 设置键为a的值自增长1，和a=a+1类似，但为atomic操作，不会出现并发问题</span></span><br><span class="line"><span class="built_in">set</span> a 1</span><br><span class="line">incr a</span><br><span class="line"><span class="comment"># 设置值自减1</span></span><br><span class="line">decr a</span><br><span class="line"><span class="comment"># 追加值到指定键的值</span></span><br><span class="line">append a 2  --&gt;  这时候a的值应该为12</span><br><span class="line"><span class="comment"># 设置键值的过期时间,设置a过期时间为100s</span></span><br><span class="line">setex a 100 s</span><br><span class="line"><span class="comment"># 获取剩余时间，值得注意的是：没有设置过期时间的键得到的值为-1，已过期的键得到的值为-2，其余的显示实际剩余时间</span></span><br><span class="line">ttl a</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>list类型的基本操作<br>list的操作一般都分为左右两种，即list头部操作为L，list尾部操作为R，另外list是有序的数据结构  </p>
+ <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 向list中添加一个值</span></span><br><span class="line">rpush lst 1</span><br><span class="line"><span class="comment"># 添加多个值</span></span><br><span class="line">rpush lst 2 3 4</span><br><span class="line"><span class="comment"># 获取指定索引位置的值</span></span><br><span class="line">lindex lst 0</span><br><span class="line"><span class="comment"># 从list尾部获取一个值，并从list中删除</span></span><br><span class="line">rpop lst</span><br><span class="line"><span class="comment"># 获取list指定范围索引的值,索引从0开始，可以使用负数，代表从尾部开始的第几个数</span></span><br><span class="line">lrange lst 0 -1</span><br><span class="line"><span class="comment"># 获取list的长度，即list元素的个数</span></span><br><span class="line">llen lst</span><br><span class="line"><span class="comment"># 设置指定索引位置的值,设置lst的0索引上的值为111</span></span><br><span class="line">lset lst 0 111</span><br><span class="line"><span class="comment"># 去除指定范围之外的值，下面这句可以去除list首尾各一个数据</span></span><br><span class="line">ltrim lst 1 -2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>set类型的基本操作</p>
+ <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加值 'yang'至s中</span></span><br><span class="line">sadd s <span class="string">'yang'</span></span><br><span class="line"><span class="comment"># 显示s所有成员</span></span><br><span class="line">smembers s</span><br><span class="line"><span class="comment"># 判断obj是否包含于set集合s中</span></span><br><span class="line">sismember s obj</span><br><span class="line"><span class="comment"># 显示s成员个数</span></span><br><span class="line">scard s</span><br><span class="line"><span class="comment"># 取若干set集合的交集（每个set集合中都包含的才会显示）</span></span><br><span class="line">sinter s s1 s2</span><br><span class="line"><span class="comment"># 取交集保存到指定集合target</span></span><br><span class="line">sinterstore target s s1 s2</span><br><span class="line"><span class="comment"># 取并集</span></span><br><span class="line">sunion s s1 s2</span><br><span class="line"><span class="comment"># 取并集保存到指定集合target</span></span><br><span class="line">sunionstore target s s1 s2</span><br><span class="line"><span class="comment"># 差集</span></span><br><span class="line">sdiff s s1 s2</span><br><span class="line"><span class="comment"># 取差集保存到指定集合</span></span><br><span class="line">sdiffstore target s s1 s2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>哈希类型操作：类似于Java中的Map和Python中的Dict</p>
+ <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置一个哈希值</span></span><br><span class="line">hset hsh name <span class="string">'yang'</span></span><br><span class="line">hset hsh age 21</span><br><span class="line"><span class="comment"># 获取指定哈希中指定字段的值</span></span><br><span class="line">hget hsh name</span><br><span class="line"><span class="comment"># 获取哈希中所有的键</span></span><br><span class="line">hkeys hsh</span><br><span class="line"><span class="comment"># 获取哈希中所有的值</span></span><br><span class="line">hvals hsh</span><br><span class="line"><span class="comment"># 获取哈希中所有的键值</span></span><br><span class="line">hgetall hsh</span><br><span class="line"><span class="comment"># 获取哈希中字段个数</span></span><br><span class="line">hlen hsh</span><br><span class="line"><span class="comment"># 哈希中某字段自增长1，类似string中的incr</span></span><br><span class="line">hincrby hsh age</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://elliot-yang.github.io/2018/06/12/redis/" data-id="ck7igcuy000002du5ncrr7r0x" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fab fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fab fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fab fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fab fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+
+    
+</article>
+
+
+    
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/06/12/redis/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/06/12/redis/" class="title">redis基础</a></p>
+                            <p class="item-date"><time datetime="2018-06-12T22:29:05.000Z" itemprop="datePublished">2018-06-12</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/NoSQL/">NoSQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/NoSQL/" style="font-size: 10px;">NoSQL</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fas fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 Yang<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
