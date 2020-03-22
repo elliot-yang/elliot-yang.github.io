@@ -14,13 +14,13 @@ tags:
 
 ### 常用命令  
 
-1. 查找命令`find`  
+#### 查找命令`find`  
 ```shell
 # 查找当前目录下所有后缀为.log的文件  
 find . -name "*.log"  
 ```  
 
-2. 查看文件列表`ls`  
+#### 查看文件列表`ls`  
 ```shell
 # 列表形式显示文件
 ls -al
@@ -32,7 +32,7 @@ ls -al
 ll | grep xx
 ```  
 
-3. 输出文件内容`cat,tail`  
+#### 输出文件内容`cat,tail`  
 ```shell
 # 直接输出文件全部内容
 cat xxx.log
@@ -42,14 +42,14 @@ tail xxx.log
 tail -f xxx.log
 ```  
 
-4. 编辑文件`vi`  
+#### 编辑文件`vi`  
 ```shell
 vi xxx.config
 ```  
 
-5. 显示当前路径`pwd`  
+#### 显示当前路径`pwd`  
 
-6. 切换用户`su`  
+#### 切换用户`su`  
 ```shell
 # 切换到web用户，但是环境变量不会重载
 su web
@@ -57,7 +57,7 @@ su web
 su - web
 ```  
 
-7. 复制文件`cp`  
+#### 复制文件`cp`  
 ```shell
 # 复制单个文件
 cp source target
@@ -65,7 +65,7 @@ cp source target
 cp -r sourceDir targetDir
 ```  
 
-8. 磁盘使用情况`du`  
+#### 磁盘使用情况`du`  
 ```shell
 # 显示各个挂载点的磁盘占用情况,-h human readable以人类可读方式展示
 du -h
@@ -73,13 +73,13 @@ du -h
 du -sh xxxDir
 ```  
 
-9. 服务器之间复制文件`scp`  
+#### 服务器之间复制文件`scp`  
 ```shell
 # 复制到远程服务器的/path目录下, -p保留源文件的修改时间和访问权限
 scp -p xxxFile user@host:/path/xxxFile
 ```  
 
-10. 解/压缩`unzip`,`tar`
+#### 解压缩`unzip`,`tar`
 ```shell
 # 直接解压zip文件
 unzip xxx.zip
@@ -92,6 +92,16 @@ tar -zxvf xxx.tar.gz
 # 解压tar.bz2, 带有compress属性的压缩包
 tar -jxvf xxx.tar.bz2
 ```  
+
+#### 压缩`zip`,`tar`
+```shell
+# 压缩当前目录下所有文件到xxx.zip, -r 表示递归所有子目录
+zip -r xxx.zip
+# 压缩xxx目录到当前目录的zip文件中
+zip -r xxx.zip /path/xxx
+# 压缩tar
+tar -czvf xxx.tar xxx
+``` 
 
 现在用到的命令也没有很多，后续还会继续补充。
 

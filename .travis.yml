@@ -7,7 +7,6 @@ branches:
   only:
     - ghPages # build ghPages branch only
 script:
-  - hexo clean
   - hexo generate # generate static files
 deploy:
   provider: pages
