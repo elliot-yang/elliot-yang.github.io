@@ -28,7 +28,7 @@
 <meta property="og:site_name" content="Yang&#39;s Blog">
 <meta property="og:description" content="前言经常在Linux服务器上操作，记录一些常用的以及不常用的命令方便以后查阅。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-22T01:55:47.024Z">
+<meta property="og:updated_time" content="2020-03-27T08:01:44.235Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux常用命令">
 <meta name="twitter:description" content="前言经常在Linux服务器上操作，记录一些常用的以及不常用的命令方便以后查阅。">
@@ -184,7 +184,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-22 01:55:47" itemprop="dateModified" datetime="2020-03-22T01:55:47+00:00">2020-03-22</time>
+                <time title="修改时间：2020-03-27 08:01:44" itemprop="dateModified" datetime="2020-03-27T08:01:44+00:00">2020-03-27</time>
               </span>
 
           
@@ -277,6 +277,11 @@ zip -r xxx.zip
 zip -r xxx.zip /path/xxx
 <span class="meta">#</span><span class="bash"> 压缩tar</span>
 tar -czvf xxx.tar xxx
+</code></pre>
+<h4 id="查找文件内容sed"><a href="#查找文件内容sed" class="headerlink" title="查找文件内容sed"></a>查找文件内容<code>sed</code></h4><pre><code class="shell"><span class="meta">#</span><span class="bash"> 找出xxx.log中包含2020-03-26的内容并打印到控制台, 可以结合重定向`&gt;`命令输出到文件中方便查看日志</span>
+sed -n '/2020-03-26/p' xxx.log
+<span class="meta">#</span><span class="bash"> 找出从2020-03-20到2020-03-26的内容</span>
+sed -n '/2020-03-20/,/2020-03-26/p' xxx.log
 </code></pre>
 <p>现在用到的命令也没有很多，后续还会继续补充。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Linux命令虽然比较复杂，但是常用的不多，有些命令用的较少但功能也比较强大，还是平时需要多使用才能记住。</p>
@@ -371,7 +376,7 @@ tar -czvf xxx.tar xxx
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用命令"><span class="nav-number">2.</span> <span class="nav-text">常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查找命令find"><span class="nav-number">2.1.</span> <span class="nav-text">查找命令find</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看文件列表ls"><span class="nav-number">2.2.</span> <span class="nav-text">查看文件列表ls</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出文件内容cat-tail"><span class="nav-number">2.3.</span> <span class="nav-text">输出文件内容cat,tail</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编辑文件vi"><span class="nav-number">2.4.</span> <span class="nav-text">编辑文件vi</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#显示当前路径pwd"><span class="nav-number">2.5.</span> <span class="nav-text">显示当前路径pwd</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#切换用户su"><span class="nav-number">2.6.</span> <span class="nav-text">切换用户su</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复制文件cp"><span class="nav-number">2.7.</span> <span class="nav-text">复制文件cp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#磁盘使用情况du"><span class="nav-number">2.8.</span> <span class="nav-text">磁盘使用情况du</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器之间复制文件scp"><span class="nav-number">2.9.</span> <span class="nav-text">服务器之间复制文件scp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解压缩unzip-tar"><span class="nav-number">2.10.</span> <span class="nav-text">解压缩unzip,tar</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#压缩zip-tar"><span class="nav-number">2.11.</span> <span class="nav-text">压缩zip,tar</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用命令"><span class="nav-number">2.</span> <span class="nav-text">常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查找命令find"><span class="nav-number">2.1.</span> <span class="nav-text">查找命令find</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看文件列表ls"><span class="nav-number">2.2.</span> <span class="nav-text">查看文件列表ls</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出文件内容cat-tail"><span class="nav-number">2.3.</span> <span class="nav-text">输出文件内容cat,tail</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编辑文件vi"><span class="nav-number">2.4.</span> <span class="nav-text">编辑文件vi</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#显示当前路径pwd"><span class="nav-number">2.5.</span> <span class="nav-text">显示当前路径pwd</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#切换用户su"><span class="nav-number">2.6.</span> <span class="nav-text">切换用户su</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复制文件cp"><span class="nav-number">2.7.</span> <span class="nav-text">复制文件cp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#磁盘使用情况du"><span class="nav-number">2.8.</span> <span class="nav-text">磁盘使用情况du</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器之间复制文件scp"><span class="nav-number">2.9.</span> <span class="nav-text">服务器之间复制文件scp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解压缩unzip-tar"><span class="nav-number">2.10.</span> <span class="nav-text">解压缩unzip,tar</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#压缩zip-tar"><span class="nav-number">2.11.</span> <span class="nav-text">压缩zip,tar</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查找文件内容sed"><span class="nav-number">2.12.</span> <span class="nav-text">查找文件内容sed</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -387,7 +392,7 @@ tar -czvf xxx.tar xxx
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
