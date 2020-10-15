@@ -20,16 +20,20 @@
     var CONFIG = {"hostname":"elliot-yang.github.io","root":"/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="keywords" content="java,yang">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yang&#39;s Blog">
-<meta property="og:url" content="https://elliot-yang.github.io/archives/2019/index.html">
+  <meta name="description" content="Maven是java开发中常见的编译工具, 拥有很多强大的plugin. 安装部分">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Maven">
+<meta property="og:url" content="https://elliot-yang.github.io/2020/10/10/mvn/index.html">
 <meta property="og:site_name" content="Yang&#39;s Blog">
+<meta property="og:description" content="Maven是java开发中常见的编译工具, 拥有很多强大的plugin. 安装部分">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-10-15T08:38:07.300Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yang&#39;s Blog">
+<meta name="twitter:title" content="Maven">
+<meta name="twitter:description" content="Maven是java开发中常见的编译工具, 拥有很多强大的plugin. 安装部分">
 
-<link rel="canonical" href="https://elliot-yang.github.io/archives/2019/">
+<link rel="canonical" href="https://elliot-yang.github.io/2020/10/10/mvn/">
 
 
 <script id="page-configurations">
@@ -37,11 +41,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false
+    isPost : true
   };
 </script>
 
-  <title>归档 | Yang's Blog</title>
+  <title>Maven | Yang's Blog</title>
   
 
 
@@ -145,73 +149,145 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://elliot-yang.github.io/2020/10/10/mvn/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.png">
+      <meta itemprop="name" content="Yang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yang's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Maven
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-10-10 16:13:45" itemprop="dateCreated datePublished" datetime="2020-10-10T16:13:45+00:00">2020-10-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-15 08:38:07" itemprop="dateModified" datetime="2020-10-15T08:38:07+00:00">2020-10-15</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
   
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 7 篇日志。 继续努力。</span>
-      </div>
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/10/10/mvn/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/10/10/mvn/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2019</h1>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-04-20T14:59:02+00:00"
-              content="2019-04-20">
-          04-20
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/04/20/byteArrayCombine/" itemprop="url">
-            <span itemprop="name">字节数组合并</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-03-18T15:12:58+00:00"
-              content="2019-03-18">
-          03-18
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/03/18/linux-basic/" itemprop="url">
-            <span itemprop="name">linux常用命令</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
+        <p>Maven是java开发中常见的编译工具, 拥有很多强大的plugin.</p>
+<h3 id="安装部分"><a href="#安装部分" class="headerlink" title="安装部分"></a>安装部分</h3><a id="more"></a>  
+<ul>
+<li><p>准备maven<br>  下载：<code>wget http://mirror.bit.edu.cn/apache/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz</code><br>  解压：<code>tar -zxvf apache-maven-3.3.9-bin.tar.gz</code><br>  移动到/usr/local：<code># mv apache-maven-3.3.9 /usr/local/maven3</code>  </p>
+</li>
+<li><p>添加环境变量：<code>vim /etc/profile</code>，在最后添加如下两行  </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export MAVEN_HOME=/usr/local/maven3</span><br><span class="line">export PATH=$MAVEN_HOME/bin:$PATH</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>保存退出后输入命令使配置生效：<code>source /etc/profile</code></p>
+</li>
+<li>检验是否安装成功：<code>mvn -v</code></li>
+</ul>
+<h3 id="编译打包"><a href="#编译打包" class="headerlink" title="编译打包"></a>编译打包</h3><ul>
+<li>基础<br>  执行命令<code>mvn clean package</code>即可清理工作空间(target目录),并重新在target目录编译打包工程</li>
+<li>跳过测试打包<br>  若是在工程中有单元测试用例,maven在编译打包时会自动执行,若需跳过只需要添加参数maven.test.skip为true即可<br>  <code>mvn clean package -Dmaven.test.skip=true</code></li>
+</ul>
+<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><ul>
+<li>基础<br>  执行命令<code>mvn deploy</code>即可, 需要提前在maven的setting.xml中配置好仓库的用户名和密码  </li>
+<li>存在父子模块的情况  <ol>
+<li>父子模块全都要发布, 直接在父目录执行命令<code>mvn deploy</code>即可  </li>
+<li>只发布父模块, 在父目录执行命令时添加参数-N即可: <code>mvn delpoy -N</code>  </li>
+</ol>
+</li>
+</ul>
 
     </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/java/" rel="tag"># java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/26/vi/" rel="prev" title="文本编辑器Vi内部命令">
+      <i class="fa fa-chevron-left"></i> 文本编辑器Vi内部命令
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/10/15/vscode/" rel="next" title="vscode快速粘贴图片为markdown形式">
+      vscode快速粘贴图片为markdown形式 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
           
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -258,6 +334,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装部分"><span class="nav-number">1.</span> <span class="nav-text">安装部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编译打包"><span class="nav-number">2.</span> <span class="nav-text">编译打包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署"><span class="nav-number">3.</span> <span class="nav-text">部署</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -389,6 +466,26 @@
   }
   // defer loading until the whole page loading is completed
   window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://elliot-yang.github.io/2020/10/10/mvn/";
+    this.page.identifier = "2020/10/10/mvn/";
+    this.page.title = "Maven";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://elliot-yang.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
 </script>
 
 </body>
