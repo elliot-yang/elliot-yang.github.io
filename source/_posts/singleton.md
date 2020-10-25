@@ -79,7 +79,7 @@ public class SingleObject{
 之所以要对`singleObject`两次判空操作，是为了防止在获取到锁之前， 别的线程已经完成了该对象的初始化， 防止重复创建。同事还需要对`singleObject`对象加上`volatile`修饰符，是为了保证该对象在内存重的可见性，防止编译重排导致逻辑不正确。  
 
 
-### 饿汉式  
+### 饱汉式  
 饱汉式适用于对象需要延迟创建的情况, 而饿汉式则是不管是否需要使用都直接初始化完成.   
 ```java
 public class SingleObject {  
@@ -106,7 +106,7 @@ public class SingleObject {
 }
 ```  
 ### 枚举
-枚举也是能够实现单例的途径之一，但是目前看到出现的频率比较低。 枚举也能只能序列化，也能保证对象只创建一次，而且写法简单的同时还保证了线程安全。  
+枚举也是能够实现单例的途径之一，但是目前看到出现的频率比较低。 枚举来实现单例的优点有很多: 支持序列化，也能保证对象只创建一次，而且写法简单的同时还保证了线程安全。  
 
 ```java  
 public enum SingleObject {  
@@ -114,6 +114,7 @@ public enum SingleObject {
     INSTANCE;
 
     public void doSomething() {  
+        //...
     }  
 }
 ```  
